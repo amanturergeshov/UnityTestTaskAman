@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UISelectorPanel : MonoBehaviour
 {
@@ -7,6 +8,8 @@ public class UISelectorPanel : MonoBehaviour
     public Transform contentParent;
     public GameObject detailsPrefab;
     private GameObject _detailsInstance;
+    public Transform detailArea;
+
     public void ClearUI()
     {
         foreach (Transform child in contentParent)
@@ -16,6 +19,7 @@ public class UISelectorPanel : MonoBehaviour
             Destroy(_detailsInstance);
 
         _detailsInstance = null;
+
     }
 
     public void Initialize<T, TAsset>(IEnumerable<T> items, SelectionContainer<T> container)
@@ -39,9 +43,11 @@ public class UISelectorPanel : MonoBehaviour
             if (_detailsInstance != null)
                 Destroy(_detailsInstance);
 
-            _detailsInstance = Instantiate(detailsPrefab, transform);
+            _detailsInstance = Instantiate(detailsPrefab, detailArea);
             _detailsInstance.GetComponent<UISelectableDetails>().Display(item);
         };
+
+        LayoutRebuilder.ForceRebuildLayoutImmediate(contentParent.GetComponent<RectTransform>());
     }
 
     public void ReactivateLast<T, TAsset>(SelectionContainer<T> container)
