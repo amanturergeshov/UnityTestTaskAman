@@ -14,6 +14,6 @@ public class LocationSelectable : SelectableBase<LocationDataAsset>
 
     public override void Load()
     {
-        SceneManager.LoadScene(_dataAsset.sceneId);
+        //SceneManager.LoadScene(_dataAsset.sceneId);
     }
 }

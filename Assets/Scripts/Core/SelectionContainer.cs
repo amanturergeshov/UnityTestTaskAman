@@ -6,7 +6,10 @@ public class SelectionContainer<T> where T : ISelectableData
     public T Current => _currentSelection;
 
     public event Action<T> OnSelectionChanged;
-
+    public void ClearCallbacks()
+    {
+        OnSelectionChanged = null;
+    }
     public void Select(T newSelection)
     {
         if (_currentSelection?.Id == newSelection?.Id)
