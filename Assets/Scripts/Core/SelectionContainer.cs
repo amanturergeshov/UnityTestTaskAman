@@ -12,8 +12,8 @@ public class SelectionContainer<T> where T : ISelectableData
     }
     public void Select(T newSelection)
     {
-        if (_currentSelection?.Id == newSelection?.Id)
-            return;
+        // if (_currentSelection?.Id == newSelection?.Id)
+        //     return;
 
         _currentSelection = newSelection;
         _currentSelection.Load();
