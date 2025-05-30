@@ -6,7 +6,6 @@ public class UISelectorPanel : MonoBehaviour
 {
     public GameObject itemPrefab;
     public Transform contentParent;
-    public GameObject detailsPrefab;
     private GameObject _detailsInstance;
     public Transform detailArea;
 
@@ -38,14 +37,7 @@ public class UISelectorPanel : MonoBehaviour
 
 
         container.ClearCallbacks();
-        container.OnSelectionChanged += item =>
-        {
-            if (_detailsInstance != null)
-                Destroy(_detailsInstance);
-
-            _detailsInstance = Instantiate(detailsPrefab, detailArea);
-            _detailsInstance.GetComponent<UISelectableDetails>().Display(item);
-        };
+        container.OnSelectionChanged += item =>DisplayDetails(item);
 
         LayoutRebuilder.ForceRebuildLayoutImmediate(contentParent.GetComponent<RectTransform>());
     }
@@ -60,8 +52,23 @@ public class UISelectorPanel : MonoBehaviour
         var current = container.Current;
         if (current != null)
         {
-            _detailsInstance = Instantiate(detailsPrefab, transform);
+            _detailsInstance = Instantiate(current.GetDetailsPrefab(), transform);
             _detailsInstance.GetComponent<UISelectableDetails>().Display(current);
+        }
+    }
+
+    private void DisplayDetails<T>(T item) where T : ISelectableData
+    {
+        if (_detailsInstance != null)
+            Destroy(_detailsInstance);
+
+        _detailsInstance = Instantiate(item.GetDetailsPrefab(), detailArea);
+
+        var detailUI = _detailsInstance.GetComponent(typeof(IDetailUI<>).MakeGenericType(item.GetType()));
+        if (detailUI != null)
+        {
+            var method = detailUI.GetType().GetMethod("Display");
+            method?.Invoke(detailUI, new object[] { item });
         }
     }
 

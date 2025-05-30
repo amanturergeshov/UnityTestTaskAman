@@ -16,3 +16,4 @@ MonoBehaviour:
   level: 1
   avatar: {fileID: 21300000, guid: 468eb890a2548d6488c8ed6676a28125, type: 3}
   characterPrefab: {fileID: 7546914402861267848, guid: 6d1d795fd94e0af4eacb4201b90c418c, type: 3}
+  detailsPrefab: {fileID: 8294844864180035706, guid: cb03920e183393745a4891bab8754676, type: 3}

@@ -6,4 +6,5 @@ public interface ISelectableData
     string DisplayName { get; }
     Sprite Icon { get; }
     void Load();
+    GameObject GetDetailsPrefab();
 }

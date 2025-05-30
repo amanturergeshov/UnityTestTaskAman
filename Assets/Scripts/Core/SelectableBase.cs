@@ -9,4 +9,6 @@ public abstract class SelectableBase<T> : ISelectableData where T : ScriptableOb
     public abstract Sprite Icon { get; }
 
     public abstract void Load();
+    public abstract GameObject GetDetailsPrefab();
+
 }

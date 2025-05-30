@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   locationName: Location3
   description: Normal Map
-  previewImage: {fileID: 0}
+  previewImage: {fileID: 21300000, guid: abf6167c34beafa419bd761434f46f30, type: 3}
   sceneId: 
+  detailsPrefab: {fileID: 8294844864180035706, guid: 8e4549d42123c7f43b3a8b46777fe7cb, type: 3}

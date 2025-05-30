@@ -7,4 +7,6 @@ public class CharacterDataAsset : ScriptableObject
     public int level;
     public Sprite avatar;
     public GameObject characterPrefab;
+    public GameObject detailsPrefab;
+
 }

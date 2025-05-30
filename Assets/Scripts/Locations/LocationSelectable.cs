@@ -16,4 +16,8 @@ public class LocationSelectable : SelectableBase<LocationDataAsset>
     {
         //SceneManager.LoadScene(_dataAsset.sceneId);
     }
+    public override GameObject GetDetailsPrefab()
+    {
+        return _dataAsset.detailsPrefab;
+    }
 }

@@ -7,4 +7,5 @@ public class LocationDataAsset : ScriptableObject
     public string description;
     public Sprite previewImage;
     public string sceneId;
+    public GameObject detailsPrefab;
 }
